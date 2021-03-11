@@ -1,29 +1,21 @@
 version: '2.1'
 
+orgs:
+  terraform: circleci/terraform@1.2.0
+
 executors:
   main:
-    working_directory: ~/project/terraform-aws-user-management
+    working_directory: ~/project/
     docker:
-      - image: cimg/base:2020.01
+      - image: cimg/base:2021.03
 
 jobs:
   test:
     executor: main
     steps:
       - checkout
-      - run:
-          name: "Download and install terraform"
-          command: |
-            set -euo pipefail
-            cd ~
-            mkdir -p ~/bin
-            curl -sSLO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-            [ $(sha256sum terraform_${TERRAFORM_VERSION}_linux_amd64.zip | cut -f1 -d ' ') = ${TERRAFORM_SHA256SUM} ]
-            unzip -o -d ~/bin -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-            rm -vf terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-          environment:
-            TERRAFORM_VERSION: "0.13.5"
-            TERRAFORM_SHA256SUM: "f7b7a7b1bfbf5d78151cfe3d1d463140b5fd6a354e71a7de2b5644e652ca5147"
+      - terraform/install:
+        terraform_version: 0.13.5
       - run:
           name: "Download and install terraform-docs"
           command: |
@@ -35,8 +27,8 @@ jobs:
             chmod 755 terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64
             mv terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64 ~/bin/terraform-docs
           environment:
-            TERRAFORM_DOCS_VERSION: "0.9.1"
-            TERRAFORM_DOCS_SHA256SUM: "ceb4e7f291d43a5f7672f7ca9543075554bacd02cf850e6402e74f18fbf28f7e"
+            TERRAFORM_DOCS_VERSION: "0.11.2"
+            TERRAFORM_DOCS_SHA256SUM: "0d1e42d6fcb15b14027ae8efb794edb1cd7faa7a32507ccad449340529d04937"
       - run: echo 'export PATH=~/bin:$PATH' >> $BASH_ENV
       - run: scripts/update-docs
       - run: scripts/format-files
