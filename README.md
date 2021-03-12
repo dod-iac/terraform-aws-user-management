@@ -1,3 +1,4 @@
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Usage
 
 Configures IAM users, groups and roles in three groups: Admin, Basic, and Alumni
@@ -49,14 +50,33 @@ This project constitutes a work of the United States Government and is not subje
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.13.0 |
-| aws | ~> 3 |
+| terraform | >= 0.13 |
+| aws | ~> 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3 |
+| aws | ~> 3.0 |
+
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_caller_identity](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) |
+| [aws_iam_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group) |
+| [aws_iam_group_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy_attachment) |
+| [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) |
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
+| [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) |
+| [aws_iam_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) |
+| [aws_iam_user](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user) |
+| [aws_iam_user_group_membership](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_group_membership) |
+| [aws_partition](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/partition) |
 
 ## Inputs
 
@@ -78,4 +98,4 @@ This project constitutes a work of the United States Government and is not subje
 | alumni\_group | Alumni Group |
 | basic\_group | Basic Group |
 | users | Users |
-
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
