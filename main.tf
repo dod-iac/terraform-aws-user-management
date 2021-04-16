@@ -1,5 +1,5 @@
 /**
- * ## Usage
+ * ## User Management
  *
  * Configures IAM users, groups and roles in three groups: Admin, Basic, and Alumni
  *

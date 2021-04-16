@@ -14,6 +14,11 @@ output "alumni_group" {
   description = "Alumni Group"
 }
 
+output "admin_role" {
+  value       = aws_iam_role.admin
+  description = "Admin Role"
+}
+
 output "users" {
   value       = aws_iam_user.user
   description = "Users"
