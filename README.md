@@ -3,7 +3,7 @@
 
 Configures IAM users, groups and roles in three groups: Admin, Basic, and Alumni
 
-* Alumni: Administrator access
+* Admin: Administrator access
 * Basic: Change Password and Manage Self Identity
 * Alumni: Deny All access
 
