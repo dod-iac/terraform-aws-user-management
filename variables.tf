@@ -18,19 +18,19 @@ variable "alumni_group_name" {
 
 variable "admin_users" {
   description = "Set of Admin IAM Users with tags."
-  type        = map(string)
+  type        = map(any)
   default     = {}
 }
 
 variable "basic_users" {
   description = "Set of Basic IAM Users with tags."
-  type        = map(string)
+  type        = map(any)
   default     = {}
 }
 
 variable "alumni_users" {
   description = "Set of Alumni IAM Users with tags."
-  type        = map(string)
+  type        = map(any)
   default     = {}
 }
 
