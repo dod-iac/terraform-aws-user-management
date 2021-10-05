@@ -1,7 +1,7 @@
 version: '2.1'
 
 orbs:
-  terraform: circleci/terraform@1.2.0
+  terraform: circleci/terraform@3.0.0
 
 executors:
   main:
@@ -15,23 +15,23 @@ jobs:
     steps:
       - checkout
       - terraform/install:
-        terraform_version: 0.13.5
+          terraform_version: 1.0.8
       - run:
           name: "Download and install terraform-docs"
           command: |
             set -euo pipefail
             cd ~
             mkdir -p ~/bin
-            curl -sSLO https://github.com/terraform-docs/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64
+            curl -sSLO https://github.com/terraform-docs/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64.tar.gz
             curl -sSLO https://github.com/terraform-docs/terraform-docs/releases/download/v${TERRAFORM_DOCS_VERSION}/terraform-docs-v${TERRAFORM_DOCS_VERSION}.sha256sum
-            [ $(sha256sum terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64 | cut -f1 -d' ') = $(grep linux-amd64 terraform-docs-v${TERRAFORM_DOCS_VERSION}.sha256sum | grep -v tar.gz | cut -f1 -d' ') ]
-            chmod 755 terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64
-            mv terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64 ~/bin/terraform-docs
+            [ $(sha256sum terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64.tar.gz | cut -f1 -d' ') = $(grep linux-amd64 terraform-docs-v${TERRAFORM_DOCS_VERSION}.sha256sum | cut -f1 -d' ') ]
+            tar -xf terraform-docs-v${TERRAFORM_DOCS_VERSION}-linux-amd64.tar.gz
+            mv terraform-docs ~/bin/terraform-docs
           environment:
-            TERRAFORM_DOCS_VERSION: "0.12.1"
+            TERRAFORM_DOCS_VERSION: "0.15.0"
       - run: echo 'export PATH=~/bin:$PATH' >> $BASH_ENV
-      - run: scripts/update-docs
-      - run: scripts/format-files
+      - run: make update_docs
+      - run: make format_terraform
       - run: git diff --exit-code
 
 workflows:

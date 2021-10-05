@@ -1,4 +1,3 @@
-
 output "admin_group" {
   value       = aws_iam_group.admin
   description = "Admin Group"
