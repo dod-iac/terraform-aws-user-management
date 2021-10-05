@@ -88,12 +88,12 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_admin_group_name"></a> [admin\_group\_name](#input\_admin\_group\_name) | Name of the Admin Group | `string` | `"admin"` | no |
-| <a name="input_admin_users"></a> [admin\_users](#input\_admin\_users) | Set of Admin IAM Users with tags. | `map` | `{}` | no |
+| <a name="input_admin_users"></a> [admin\_users](#input\_admin\_users) | Set of Admin IAM Users with tags. | `map(string)` | `{}` | no |
 | <a name="input_alumni_group_name"></a> [alumni\_group\_name](#input\_alumni\_group\_name) | Name of the Alumni Group | `string` | `"alumni"` | no |
-| <a name="input_alumni_users"></a> [alumni\_users](#input\_alumni\_users) | Set of Alumni IAM Users with tags. | `map` | `{}` | no |
+| <a name="input_alumni_users"></a> [alumni\_users](#input\_alumni\_users) | Set of Alumni IAM Users with tags. | `map(string)` | `{}` | no |
 | <a name="input_basic_group_name"></a> [basic\_group\_name](#input\_basic\_group\_name) | Name of the Basic Group | `string` | `"basic"` | no |
-| <a name="input_basic_users"></a> [basic\_users](#input\_basic\_users) | Set of Basic IAM Users with tags. | `map` | `{}` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | Tags for resources | `map` | `{}` | no |
+| <a name="input_basic_users"></a> [basic\_users](#input\_basic\_users) | Set of Basic IAM Users with tags. | `map(string)` | `{}` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | Tags for resources | `map(string)` | `{}` | no |
 
 ## Outputs
 
